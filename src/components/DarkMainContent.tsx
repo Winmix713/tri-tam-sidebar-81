@@ -1,10 +1,11 @@
 
 import React from 'react';
 import DashboardHeader from './dashboard/DashboardHeader';
-import OverviewCards from './dashboard/OverviewCards';
-import CustomerAnalytics from './dashboard/CustomerAnalytics';
-import CustomerAvatars from './dashboard/CustomerAvatars';
-import PopularProducts from './dashboard/PopularProducts';
+import EnhancedOverviewCards from './dashboard/EnhancedOverviewCards';
+import ProductViewChart from './dashboard/ProductViewChart';
+import EnhancedCustomerSection from './dashboard/EnhancedCustomerSection';
+import ContentCarousel from './dashboard/ContentCarousel';
+import SocialMediaPromotion from './dashboard/SocialMediaPromotion';
 
 const DarkMainContent = () => {
   return (
@@ -21,14 +22,15 @@ const DarkMainContent = () => {
           <div className="grid grid-cols-3 gap-8">
             {/* Main Content Area */}
             <div className="col-span-2">
-              <OverviewCards theme="dark" />
-              <CustomerAnalytics theme="dark" />
-              <CustomerAvatars theme="dark" />
+              <EnhancedOverviewCards theme="dark" />
+              <ProductViewChart theme="dark" />
+              <EnhancedCustomerSection theme="dark" />
+              <ContentCarousel theme="dark" />
             </div>
             
             {/* Sidebar */}
             <div className="col-span-1">
-              <PopularProducts theme="dark" />
+              <SocialMediaPromotion theme="dark" />
             </div>
           </div>
         </div>
