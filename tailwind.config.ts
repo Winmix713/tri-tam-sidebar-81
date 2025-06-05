@@ -23,6 +23,8 @@ export default {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				'sf-pro': ['SF Pro Text', 'system-ui', 'sans-serif'],
 				'sf-pro-display': ['SF Pro Display', 'system-ui', 'sans-serif'],
+				'mono': ['JetBrains Mono', 'monospace'],
+				'circular': ['CircularXX', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -95,6 +97,9 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
+			},
+			backdropBlur: {
+				'32': '32px',
 			}
 		}
 	},
