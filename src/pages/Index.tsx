@@ -1,17 +1,17 @@
 
-import React, { useState } from 'react';
-import Layout from '@/components/Layout';
-import DarkLayout from '@/components/DarkLayout';
+import React from 'react';
+import { ThemeProvider } from '@/contexts/ThemeContext';
+import UnifiedLayout from '@/components/UnifiedLayout';
 import ThemeToggle from '@/components/ThemeToggle';
 
-const Index = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+const Index: React.FC = () => {
   return (
-    <div className="relative">
-      <ThemeToggle onThemeChange={setIsDarkMode} />
-      {isDarkMode ? <DarkLayout /> : <Layout />}
-    </div>
+    <ThemeProvider>
+      <div className="relative">
+        <ThemeToggle />
+        <UnifiedLayout />
+      </div>
+    </ThemeProvider>
   );
 };
 
