@@ -34,18 +34,6 @@ const DarkMainContent = () => {
           </div>
         </div>
       </div>
-      
-      {/* Content Box Overlay */}
-      <div 
-        className="absolute"
-        style={{
-          width: '306px',
-          height: '880px',
-          left: '125px',
-          top: '0px',
-          background: 'linear-gradient(270deg, #202020 0%, rgba(32, 32, 32, 0) 100%)'
-        }}
-      />
     </div>
   );
 };
