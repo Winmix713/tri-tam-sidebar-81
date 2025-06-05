@@ -7,40 +7,47 @@ interface DashboardHeaderProps {
 }
 
 const DashboardHeader: React.FC<DashboardHeaderProps> = ({ theme }) => {
-  const textColor = theme === 'dark' ? 'text-[#f1f1f1]' : 'text-[#1e1e1e]';
-  const secondaryText = theme === 'dark' ? 'text-[#a8a8a8]' : 'text-[#666666]';
-  const inputBg = theme === 'dark' ? 'bg-[#363636] border-[#4c4c4c]' : 'bg-gray-50 border-[#e8e8e8]';
+  const textPrimary = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const textSecondary = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
+  const inputBg = theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200';
+  const dropdownBg = theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200';
 
   return (
     <div className="flex items-center justify-between mb-8">
       <div>
-        <h1 className={`text-2xl font-bold ${textColor} mb-1`}>Dashboard Overview</h1>
-        <p className={`${secondaryText} text-sm`}>Welcome back! Here's what's happening with your store today.</p>
+        <h1 className={`text-3xl font-bold ${textPrimary} mb-2`}>
+          Dashboard Overview
+        </h1>
+        <p className={`${textSecondary} text-base`}>
+          Welcome back! Here's what's happening with your store today.
+        </p>
       </div>
       
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         {/* Time Period Selector */}
-        <div className="flex items-center gap-2">
-          <span className={`text-sm ${secondaryText}`}>Last 7 days</span>
-          <ChevronDown className={`w-4 h-4 ${secondaryText}`} />
+        <div className={`flex items-center gap-3 px-4 py-2 ${dropdownBg} border rounded-xl cursor-pointer hover:shadow-md transition-all`}>
+          <span className={`text-sm font-medium ${textPrimary}`}>Last 7 days</span>
+          <ChevronDown className={`w-4 h-4 ${textSecondary}`} />
         </div>
         
         {/* Search */}
-        <div className={`relative`}>
-          <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${secondaryText}`} />
+        <div className="relative">
+          <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 ${textSecondary}`} />
           <input 
             type="text" 
-            placeholder="Search..." 
-            className={`${inputBg} border rounded-lg pl-10 pr-4 py-2 text-sm ${textColor} placeholder-${secondaryText} w-64`}
+            placeholder="Search anything..." 
+            className={`${inputBg} border rounded-xl pl-10 pr-4 py-3 text-sm ${textPrimary} placeholder:${textSecondary} w-80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
           />
         </div>
         
         {/* Notifications */}
         <div className="relative">
-          <Bell className={`w-5 h-5 ${secondaryText} cursor-pointer`} />
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full flex items-center justify-center">
-            <span className="text-xs text-white font-bold">3</span>
-          </div>
+          <button className={`p-3 ${dropdownBg} border rounded-xl hover:shadow-md transition-all`}>
+            <Bell className={`w-5 h-5 ${textSecondary}`} />
+            <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-xs text-white font-semibold">3</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>

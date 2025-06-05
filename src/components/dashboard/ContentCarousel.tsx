@@ -9,11 +9,12 @@ interface ContentCarouselProps {
 
 const ContentCarousel: React.FC<ContentCarouselProps> = ({ theme }) => {
   const cardBg = theme === 'dark' 
-    ? 'bg-[#282828] border-[#363636]' 
-    : 'bg-white border-[#e8e8e8]';
+    ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm' 
+    : 'bg-white/80 border-gray-200/50 backdrop-blur-sm';
   
-  const textColor = theme === 'dark' ? 'text-[#f1f1f1]' : 'text-[#1e1e1e]';
-  const secondaryText = theme === 'dark' ? 'text-[#a8a8a8]' : 'text-[#666666]';
+  const textPrimary = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const textSecondary = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
+  const itemBg = theme === 'dark' ? 'bg-gray-700/50 border-gray-600/50' : 'bg-gray-50/80 border-gray-200/50';
 
   const carouselItems = [
     {
@@ -22,8 +23,8 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ theme }) => {
       author: 'Sarah',
       readTime: '3 mins read',
       badge: 'new',
-      badgeColor: 'bg-green-100 text-green-800',
-      gradient: 'linear-gradient(to bottom, #DEB2FF, #D49EFC)',
+      badgeColor: 'bg-green-500 text-white',
+      gradient: 'linear-gradient(135deg, #DEB2FF, #D49EFC)',
       icon: '📅'
     },
     {
@@ -32,8 +33,8 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ theme }) => {
       author: 'Mike',
       readTime: '9 mins read',
       badge: 'hot',
-      badgeColor: 'bg-red-100 text-red-800',
-      gradient: 'linear-gradient(to bottom, #FFE4B1, #FFCF75)',
+      badgeColor: 'bg-red-500 text-white',
+      gradient: 'linear-gradient(135deg, #FFE4B1, #FFCF75)',
       icon: '📸'
     },
     {
@@ -42,8 +43,8 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ theme }) => {
       author: 'Anna',
       readTime: '16 mins read',
       badge: 'new',
-      badgeColor: 'bg-green-100 text-green-800',
-      gradient: 'linear-gradient(to bottom, rgba(208, 242, 223, .7), #B5E4CA)',
+      badgeColor: 'bg-green-500 text-white',
+      gradient: 'linear-gradient(135deg, rgba(208, 242, 223, .8), #B5E4CA)',
       icon: '📥'
     },
     {
@@ -52,55 +53,57 @@ const ContentCarousel: React.FC<ContentCarouselProps> = ({ theme }) => {
       author: 'David',
       readTime: '35 mins read',
       badge: 'hot',
-      badgeColor: 'bg-red-100 text-red-800',
-      gradient: 'linear-gradient(to bottom, #D2F4FF, #A1E0F5)',
+      badgeColor: 'bg-red-500 text-white',
+      gradient: 'linear-gradient(135deg, #D2F4FF, #A1E0F5)',
       icon: '✅'
     }
   ];
 
   return (
-    <div className={`${cardBg} border rounded-[20px] overflow-hidden mb-8`}>
-      {/* Header */}
-      <div className="flex items-center justify-between p-6 pb-3">
-        <h3 className={`text-xl font-semibold ${textColor}`}>Overview</h3>
-        <div className="flex items-center gap-2">
-          <button className={`p-2 rounded-full border transition-all ${theme === 'dark' ? 'border-[#363636] hover:bg-[#363636]' : 'border-gray-300 hover:bg-gray-50'}`}>
-            <ChevronLeft className={`w-4 h-4 ${secondaryText}`} />
+    <div className={`${cardBg} border rounded-3xl overflow-hidden mb-10 hover:shadow-2xl transition-all duration-300`}>
+      {/* Enhanced Header */}
+      <div className="flex items-center justify-between p-8 pb-6">
+        <div>
+          <h3 className={`text-2xl font-bold ${textPrimary} mb-1`}>Content Overview</h3>
+          <p className={`${textSecondary} text-sm`}>Latest updates and resources</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <button className={`p-3 ${itemBg} border rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105`}>
+            <ChevronLeft className={`w-5 h-5 ${textSecondary}`} />
           </button>
-          <button className={`p-2 rounded-full border transition-all ${theme === 'dark' ? 'border-[#363636] hover:bg-[#363636]' : 'border-gray-300 hover:bg-gray-50'}`}>
-            <ChevronRight className={`w-4 h-4 ${secondaryText}`} />
+          <button className={`p-3 ${itemBg} border rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-105`}>
+            <ChevronRight className={`w-5 h-5 ${textSecondary}`} />
           </button>
         </div>
       </div>
 
-      {/* Carousel */}
-      <div className="px-6 pb-6">
+      {/* Enhanced Carousel */}
+      <div className="px-8 pb-8">
         <Carousel className="w-full">
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-6">
             {carouselItems.map((item) => (
-              <CarouselItem key={item.id} className="pl-4 basis-1/3">
-                <div className={`p-4 border rounded-2xl cursor-pointer transition-all hover:shadow-lg ${theme === 'dark' ? 'border-[#363636] hover:bg-[#363636]' : 'border-gray-200 hover:bg-gray-50'}`}>
-                  {/* Icon */}
+              <CarouselItem key={item.id} className="pl-6 basis-1/3">
+                <div className={`p-6 ${itemBg} border rounded-3xl cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02] group`}>
+                  {/* Enhanced Icon */}
                   <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center mb-4 text-2xl"
+                    className="w-20 h-20 rounded-3xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-300"
                     style={{ background: item.gradient }}
                   >
                     {item.icon}
                   </div>
                   
-                  {/* Title */}
-                  <h4 className={`font-semibold mb-3 ${textColor}`}>{item.title}</h4>
+                  {/* Enhanced Title */}
+                  <h4 className={`text-lg font-bold mb-4 ${textPrimary} group-hover:text-blue-500 transition-colors`}>
+                    {item.title}
+                  </h4>
                   
-                  {/* Footer */}
+                  {/* Enhanced Footer */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 bg-gray-300 rounded-full"></div>
-                      <span className={`text-xs ${secondaryText}`}>{item.readTime}</span>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full"></div>
+                      <span className={`text-sm ${textSecondary}`}>{item.readTime}</span>
                     </div>
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${theme === 'dark' ? 
-                      item.badge === 'new' ? 'bg-green-900 text-green-300' : 'bg-red-900 text-red-300'
-                      : item.badgeColor
-                    }`}>
+                    <span className={`px-3 py-1 rounded-xl text-xs font-semibold ${item.badgeColor} uppercase tracking-wide`}>
                       {item.badge}
                     </span>
                   </div>

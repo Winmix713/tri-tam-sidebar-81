@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, ChevronDown } from 'lucide-react';
 
 interface ProductViewChartProps {
   theme: 'light' | 'dark';
@@ -9,11 +9,12 @@ interface ProductViewChartProps {
 
 const ProductViewChart: React.FC<ProductViewChartProps> = ({ theme }) => {
   const cardBg = theme === 'dark' 
-    ? 'bg-[#282828] border-[#363636]' 
-    : 'bg-white border-[#e8e8e8]';
+    ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm' 
+    : 'bg-white/80 border-gray-200/50 backdrop-blur-sm';
   
-  const textColor = theme === 'dark' ? 'text-[#f1f1f1]' : 'text-[#1e1e1e]';
-  const secondaryText = theme === 'dark' ? 'text-[#a8a8a8]' : 'text-[#666666]';
+  const textPrimary = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const textSecondary = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
+  const selectorBg = theme === 'dark' ? 'bg-gray-700/50 border-gray-600' : 'bg-gray-50/80 border-gray-200';
 
   const data = [
     { name: '14', value: 520, highlighted: false },
@@ -27,46 +28,50 @@ const ProductViewChart: React.FC<ProductViewChartProps> = ({ theme }) => {
 
   const getBarColor = (highlighted: boolean) => {
     if (highlighted) {
-      return theme === 'dark' ? '#3b82f6' : '#3b82f6';
+      return theme === 'dark' ? '#3b82f6' : '#2563eb';
     }
-    return theme === 'dark' ? 'rgba(168, 168, 168, 0.3)' : 'rgba(156, 163, 175, 0.4)';
+    return theme === 'dark' ? 'rgba(156, 163, 175, 0.3)' : 'rgba(156, 163, 175, 0.4)';
   };
 
   return (
-    <div className={`${cardBg} border rounded-[20px] p-6 mb-8`}>
-      <div className="flex items-center justify-between mb-6">
-        <h3 className={`text-lg font-semibold ${textColor}`}>Product view</h3>
-        <div className={`flex items-center gap-2 px-4 py-2 border rounded-full cursor-pointer ${cardBg} border-gray-300`}>
-          <span className={`text-sm ${textColor}`}>Last 7 days</span>
+    <div className={`${cardBg} border rounded-3xl p-8 mb-10 hover:shadow-2xl transition-all duration-300`}>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h3 className={`text-2xl font-bold ${textPrimary} mb-1`}>Product Views</h3>
+          <p className={`${textSecondary} text-sm`}>Revenue from product interactions</p>
+        </div>
+        <div className={`flex items-center gap-3 px-5 py-3 ${selectorBg} border rounded-2xl cursor-pointer hover:shadow-lg transition-all duration-300`}>
+          <span className={`text-sm font-medium ${textPrimary}`}>Last 7 days</span>
+          <ChevronDown className={`w-4 h-4 ${textSecondary}`} />
         </div>
       </div>
 
-      <div className="flex items-end gap-8">
-        <div className="flex-shrink-0">
-          <div className="flex items-baseline gap-2 mb-4">
-            <span className={`text-sm ${secondaryText}`}>$</span>
-            <span className={`text-4xl font-bold ${textColor}`}>10.2m</span>
+      <div className="flex items-end gap-12">
+        <div className="flex-shrink-0 space-y-6">
+          <div className="flex items-baseline gap-2">
+            <span className={`text-lg ${textSecondary} font-medium`}>$</span>
+            <span className={`text-5xl font-bold ${textPrimary}`}>10.2m</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 px-2 py-1 bg-green-50 text-green-600 rounded-lg text-xs font-medium">
-              <TrendingUp className="w-3 h-3" />
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-xl text-sm font-medium">
+              <TrendingUp className="w-4 h-4" />
               36.8%
             </div>
-            <span className={`text-xs ${secondaryText}`}>vs last month</span>
+            <span className={`text-sm ${textSecondary}`}>vs last month</span>
           </div>
         </div>
 
-        <div className="flex-1 h-64">
+        <div className="flex-1 h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
               <XAxis 
                 dataKey="name" 
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: theme === 'dark' ? '#a8a8a8' : '#666666' }}
+                tick={{ fontSize: 14, fill: theme === 'dark' ? '#9ca3af' : '#6b7280', fontWeight: 500 }}
               />
               <YAxis hide />
-              <Bar dataKey="value" radius={[6, 6, 6, 6]}>
+              <Bar dataKey="value" radius={[8, 8, 8, 8]}>
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={getBarColor(entry.highlighted)} />
                 ))}

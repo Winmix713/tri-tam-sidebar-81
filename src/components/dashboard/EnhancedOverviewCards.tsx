@@ -8,56 +8,73 @@ interface EnhancedOverviewCardsProps {
 
 const EnhancedOverviewCards: React.FC<EnhancedOverviewCardsProps> = ({ theme }) => {
   const cardBg = theme === 'dark' 
-    ? 'bg-[#282828] border-[#363636]' 
-    : 'bg-white border-[#e8e8e8]';
+    ? 'bg-gray-800/50 border-gray-700/50 backdrop-blur-sm' 
+    : 'bg-white/80 border-gray-200/50 backdrop-blur-sm';
   
-  const textColor = theme === 'dark' ? 'text-[#f1f1f1]' : 'text-[#1e1e1e]';
-  const secondaryText = theme === 'dark' ? 'text-[#a8a8a8]' : 'text-[#666666]';
-  const highlightBg = theme === 'dark' ? 'bg-[#363636]' : 'bg-gray-50';
+  const textPrimary = theme === 'dark' ? 'text-white' : 'text-gray-900';
+  const textSecondary = theme === 'dark' ? 'text-gray-400' : 'text-gray-600';
+  const selectorBg = theme === 'dark' ? 'bg-gray-700/50 border-gray-600' : 'bg-gray-50/80 border-gray-200';
 
   return (
-    <div className="mb-8">
-      {/* Header with time selector */}
-      <div className="flex items-center justify-between mb-6">
-        <h2 className={`text-xl font-semibold ${textColor}`}>Overview</h2>
-        <div className={`flex items-center gap-2 px-4 py-2 border rounded-full cursor-pointer hover:${highlightBg} transition-colors ${cardBg} border-gray-300`}>
-          <span className={`text-sm ${textColor}`}>Last 7 days</span>
-          <ChevronDown className={`w-4 h-4 ${secondaryText}`} />
+    <div className="mb-10">
+      {/* Header with enhanced styling */}
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h2 className={`text-2xl font-bold ${textPrimary} mb-1`}>Overview</h2>
+          <p className={`${textSecondary} text-sm`}>Your business metrics at a glance</p>
+        </div>
+        <div className={`flex items-center gap-3 px-5 py-3 ${selectorBg} border rounded-2xl cursor-pointer hover:shadow-lg transition-all duration-300`}>
+          <span className={`text-sm font-medium ${textPrimary}`}>Last 7 days</span>
+          <ChevronDown className={`w-4 h-4 ${textSecondary}`} />
         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-2 gap-6">
+      {/* Enhanced Cards Grid */}
+      <div className="grid grid-cols-2 gap-8">
         {/* Customers Card */}
-        <div className={`${cardBg} border rounded-[20px] p-6 transition-all hover:shadow-lg cursor-pointer group`}>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <Users className={`w-6 h-6 ${textColor} group-hover:text-blue-500 transition-colors`} />
-              <h3 className={`text-sm font-medium ${secondaryText} uppercase tracking-wide`}>CUSTOMERS</h3>
+        <div className={`${cardBg} border rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer group`}>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-2xl group-hover:bg-blue-200 dark:group-hover:bg-blue-800/50 transition-colors">
+                <Users className={`w-7 h-7 text-blue-600 dark:text-blue-400`} />
+              </div>
+              <div>
+                <h3 className={`text-sm font-semibold ${textSecondary} uppercase tracking-wider`}>CUSTOMERS</h3>
+                <p className={`text-xs ${textSecondary} mt-1`}>Total active users</p>
+              </div>
             </div>
-            <div className="flex items-center gap-1 px-2 py-1 bg-red-50 text-red-600 rounded-lg text-xs font-medium">
-              <TrendingDown className="w-3 h-3" />
+            <div className="flex items-center gap-2 px-3 py-2 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-sm font-medium">
+              <TrendingDown className="w-4 h-4" />
               36.8%
             </div>
           </div>
-          <div className={`text-3xl font-bold ${textColor} mb-2`}>1,293</div>
-          <div className={`text-xs ${secondaryText}`}>vs last month</div>
+          <div className="space-y-2">
+            <div className={`text-4xl font-bold ${textPrimary}`}>1,293</div>
+            <div className={`text-sm ${textSecondary}`}>vs last month</div>
+          </div>
         </div>
 
         {/* Balance Card */}
-        <div className={`${cardBg} border rounded-[20px] p-6 transition-all hover:shadow-lg cursor-pointer group`}>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <Wallet className={`w-6 h-6 ${secondaryText} group-hover:text-green-500 transition-colors`} />
-              <h3 className={`text-sm font-medium ${secondaryText} uppercase tracking-wide`}>BALANCE</h3>
+        <div className={`${cardBg} border rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer group`}>
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-2xl group-hover:bg-green-200 dark:group-hover:bg-green-800/50 transition-colors">
+                <Wallet className={`w-7 h-7 text-green-600 dark:text-green-400`} />
+              </div>
+              <div>
+                <h3 className={`text-sm font-semibold ${textSecondary} uppercase tracking-wider`}>BALANCE</h3>
+                <p className={`text-xs ${textSecondary} mt-1`}>Current account balance</p>
+              </div>
             </div>
-            <div className="flex items-center gap-1 px-2 py-1 bg-green-50 text-green-600 rounded-lg text-xs font-medium">
-              <TrendingUp className="w-3 h-3" />
+            <div className="flex items-center gap-2 px-3 py-2 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-xl text-sm font-medium">
+              <TrendingUp className="w-4 h-4" />
               36.8%
             </div>
           </div>
-          <div className={`text-3xl font-bold ${textColor} mb-2`}>256k</div>
-          <div className={`text-xs ${secondaryText}`}>vs last month</div>
+          <div className="space-y-2">
+            <div className={`text-4xl font-bold ${textPrimary}`}>256k</div>
+            <div className={`text-sm ${textSecondary}`}>vs last month</div>
+          </div>
         </div>
       </div>
     </div>
