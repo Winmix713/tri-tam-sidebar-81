@@ -1,8 +1,7 @@
-
 import React from 'react';
 
 const DarkMainContent = () => {
-  const ContentCard = ({ title, className = "", children }) => (
+  const ContentCard = ({ title, className = "", children }: { title?: string; className?: string; children: React.ReactNode }) => (
     <div 
       className={`bg-[#282828] rounded-[20px] border border-[#363636] p-6 backdrop-blur-[32px] ${className}`}
       style={{
