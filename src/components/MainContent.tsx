@@ -9,11 +9,10 @@ import SocialMediaPromotion from './dashboard/SocialMediaPromotion';
 
 const MainContent = () => {
   return (
-    <div className="relative" style={{ width: '432px', height: '880px' }}>
+    <div className="relative flex-1">
       {/* Main Content Box */}
       <div 
-        className="border border-[#e8e8e8] rounded-[32px] relative bg-white overflow-hidden"
-        style={{ width: '730px', height: '880px' }}
+        className="border border-[#e8e8e8] rounded-[32px] relative bg-white overflow-hidden w-full h-[880px]"
       >
         {/* Content Container */}
         <div className="p-8 h-full overflow-y-auto">

@@ -25,7 +25,7 @@ const UnifiedLayout: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${backgroundClass} flex items-center justify-center p-8`}>
-      <div className={`flex w-[752px] h-[904px] ${containerBackground} rounded-[32px] overflow-hidden`}>
+      <div className={`flex w-full max-w-none h-[904px] ${containerBackground} rounded-[32px] overflow-hidden`}>
         <UnifiedSidebar 
           theme={theme} 
           profileData={profileData} 

@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import { TrendingUp, ChevronDown } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell } from 'recharts';
+import { TrendingUp } from 'lucide-react';
 
 interface ProductViewChartProps {
   theme: 'light' | 'dark';
@@ -14,45 +14,37 @@ const ProductViewChart: React.FC<ProductViewChartProps> = ({ theme }) => {
   
   const textColor = theme === 'dark' ? 'text-[#f1f1f1]' : 'text-[#1e1e1e]';
   const secondaryText = theme === 'dark' ? 'text-[#a8a8a8]' : 'text-[#666666]';
-  const highlightBg = theme === 'dark' ? 'bg-[#363636]' : 'bg-gray-50';
 
   const data = [
-    { day: '14', value: 4200, highlighted: false },
-    { day: '15', value: 5800, highlighted: false },
-    { day: '16', value: 2900, highlighted: true },
-    { day: '17', value: 8200, highlighted: false },
-    { day: '18', value: 6500, highlighted: false },
-    { day: '19', value: 2400, highlighted: true },
-    { day: '20', value: 7100, highlighted: false },
+    { name: '14', value: 520, highlighted: false },
+    { name: '15', value: 680, highlighted: false },
+    { name: '16', value: 320, highlighted: true },
+    { name: '17', value: 890, highlighted: false },
+    { name: '18', value: 750, highlighted: false },
+    { name: '19', value: 280, highlighted: true },
+    { name: '20', value: 820, highlighted: false },
   ];
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className={`p-3 rounded-lg shadow-lg ${cardBg} border`}>
-          <p className={`text-sm ${textColor}`}>{`Day ${label}: $${(payload[0].value / 1000).toFixed(1)}k`}</p>
-        </div>
-      );
+  const getBarColor = (highlighted: boolean) => {
+    if (highlighted) {
+      return theme === 'dark' ? '#3b82f6' : '#3b82f6';
     }
-    return null;
+    return theme === 'dark' ? 'rgba(168, 168, 168, 0.3)' : 'rgba(156, 163, 175, 0.4)';
   };
 
   return (
     <div className={`${cardBg} border rounded-[20px] p-6 mb-8`}>
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h3 className={`text-xl font-semibold ${textColor}`}>Product view</h3>
-        <div className={`flex items-center gap-2 px-4 py-2 border rounded-full cursor-pointer hover:${highlightBg} transition-colors border-gray-300`}>
+        <h3 className={`text-lg font-semibold ${textColor}`}>Product view</h3>
+        <div className={`flex items-center gap-2 px-4 py-2 border rounded-full cursor-pointer ${cardBg} border-gray-300`}>
           <span className={`text-sm ${textColor}`}>Last 7 days</span>
-          <ChevronDown className={`w-4 h-4 ${secondaryText}`} />
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="flex items-end gap-8 mb-6">
-        <div>
-          <div className="flex items-baseline gap-1 mb-2">
-            <span className={`text-2xl ${secondaryText}`}>$</span>
+      <div className="flex items-end gap-8">
+        <div className="flex-shrink-0">
+          <div className="flex items-baseline gap-2 mb-4">
+            <span className={`text-sm ${secondaryText}`}>$</span>
             <span className={`text-4xl font-bold ${textColor}`}>10.2m</span>
           </div>
           <div className="flex items-center gap-2">
@@ -63,27 +55,25 @@ const ProductViewChart: React.FC<ProductViewChartProps> = ({ theme }) => {
             <span className={`text-xs ${secondaryText}`}>vs last month</span>
           </div>
         </div>
-      </div>
 
-      {/* Chart */}
-      <div className="h-64">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <XAxis 
-              dataKey="day" 
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: theme === 'dark' ? '#a8a8a8' : '#666666', fontSize: 12 }}
-            />
-            <YAxis hide />
-            <Tooltip content={<CustomTooltip />} />
-            <Bar 
-              dataKey="value" 
-              radius={[6, 6, 0, 0]}
-              fill={(entry: any) => entry.highlighted ? '#3b82f6' : theme === 'dark' ? 'rgba(168, 168, 168, 0.3)' : 'rgba(156, 163, 175, 0.4)'}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+        <div className="flex-1 h-64">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+              <XAxis 
+                dataKey="name" 
+                axisLine={false}
+                tickLine={false}
+                tick={{ fontSize: 12, fill: theme === 'dark' ? '#a8a8a8' : '#666666' }}
+              />
+              <YAxis hide />
+              <Bar dataKey="value" radius={[6, 6, 6, 6]}>
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={getBarColor(entry.highlighted)} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
