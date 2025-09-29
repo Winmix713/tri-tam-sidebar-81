@@ -34,18 +34,6 @@ const MainContent = () => {
           </div>
         </div>
       </div>
-      
-      {/* Content Box Overlay */}
-      <div 
-        className="absolute"
-        style={{
-          width: '306px',
-          height: '880px',
-          left: '125px',
-          top: '0px',
-          background: 'linear-gradient(270deg, #FCFCFC 0%, rgba(252, 252, 252, 0) 100%)'
-        }}
-      />
     </div>
   );
 };
