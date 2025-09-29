@@ -9,7 +9,8 @@ import {
   Plus, 
   Minus, 
   ChevronUp,
-  ChevronDown 
+  ChevronDown,
+  LucideIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -43,7 +44,13 @@ const Sidebar = () => {
     </div>
   );
 
-  const MenuItem = ({ icon: Icon, label, active = false, badge = null, onClick = () => {} }) => (
+  const MenuItem = ({ icon: Icon, label, active = false, badge = null, onClick = () => {} }: {
+    icon: LucideIcon;
+    label: string;
+    active?: boolean;
+    badge?: string | null;
+    onClick?: () => void;
+  }) => (
     <div 
       className={`flex items-center justify-between p-3 rounded-[10px] cursor-pointer transition-all duration-200 font-sf-pro text-[15px] font-semibold leading-6 ${
         active 
@@ -65,7 +72,7 @@ const Sidebar = () => {
     </div>
   );
 
-  const SubMenuItem = ({ label }) => (
+  const SubMenuItem = ({ label }: { label: string }) => (
     <div className="py-3 text-[#989898] font-sf-pro font-semibold text-[15px] leading-6 cursor-pointer hover:text-gray-700 transition-colors">
       {label}
     </div>
