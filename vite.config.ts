@@ -18,6 +18,18 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    sourcemap: true,
+    rollupOptions: {
+      onwarn: (warning, warn) => {
+        // Suppress specific warnings
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+          return;
+        }
+        warn(warning);
+      }
+    }
+  },
   optimizeDeps: {
     exclude: ["lovable-tagger"],
   },
