@@ -1,0 +1,236 @@
+
+Presets:
+
+
+Arctic Haze:
+"
+backdrop-filter: blur(12px) saturate(120%);
+-webkit-backdrop-filter: blur(12px) saturate(120%);
+background: rgba(224, 242, 254, 0.1);
+border-radius: 16px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 0px 8px 24px 0 rgba(12, 74, 110, 0.15),
+            inset 0 0 0px rgba(255, 255, 255, 0),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.2);
+/* Reflection overlay for realism using pseudo-elements */
+.glassmorphism-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to left top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+}
+
+.glassmorphism-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+"
+-------------------------------------
+Midnight Blue:
+"
+backdrop-filter: blur(16px) saturate(180%);
+-webkit-backdrop-filter: blur(16px) saturate(180%);
+background: rgba(30, 41, 59, 0.15);
+border-radius: 20px;
+border: 1px solid rgba(100, 116, 139, 0.2);
+box-shadow: 0px 12px 40px 0 rgba(2, 6, 23, 0.3),
+            inset 0 0 120px rgba(79, 70, 229, 0.08),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.1);
+"
+-------------------------------------
+
+Cosmic Latte:
+"
+backdrop-filter: blur(8px) saturate(100%);
+-webkit-backdrop-filter: blur(8px) saturate(100%);
+background: rgba(253, 244, 227, 0.08);
+border-radius: 24px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 4px 4px 20px 0 rgba(120, 53, 15, 0.1),
+            inset 0 0 150px rgba(245, 158, 11, 0.05),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.15);
+/* Reflection overlay for realism using pseudo-elements */
+.glassmorphism-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to left top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+}
+
+.glassmorphism-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+"
+-------------------------------------
+
+Emerald Tablet:
+"
+backdrop-filter: blur(20px) saturate(160%);
+-webkit-backdrop-filter: blur(20px) saturate(160%);
+background: rgba(6, 78, 59, 0.18);
+border-radius: 12px;
+border: 1px solid rgba(110, 231, 183, 0.2);
+box-shadow: 0px 10px 30px 0 rgba(2, 44, 34, 0.25),
+            inset 0 0 0px rgba(255, 255, 255, 0),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.05);
+"
+-------------------------------------
+
+Amethyst Haze:
+"
+backdrop-filter: blur(41px) saturate(17%);
+-webkit-backdrop-filter: blur(41px) saturate(17%);
+background: rgba(254, 252, 232, 0.03);
+border-radius: 50px;
+border: 10px solid rgba(255, 255, 255, 0.2);
+box-shadow: 2px 6px 28px 0 rgba(59, 7, 100, 0.3),
+            inset 0 0 0px rgba(216, 180, 254, 0),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.25);
+/* Reflection overlay for realism using pseudo-elements */
+.glassmorphism-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to left top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+}
+
+.glassmorphism-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+"
+-------------------------------------
+
+Obsidian Shard:
+"
+backdrop-filter: blur(25px) saturate(100%);
+-webkit-backdrop-filter: blur(25px) saturate(100%);
+background: rgba(23, 23, 23, 0.05);
+border-radius: 8px;
+border: 1px solid rgba(82, 82, 82, 0.2);
+box-shadow: 0px 16px 60px 0 rgba(0, 0, 0, 0.4),
+            inset 0 0 0px rgba(255, 255, 255, 0),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.1);
+/* Reflection overlay for realism using pseudo-elements */
+.glassmorphism-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to left top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+}
+
+.glassmorphism-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+"
+-------------------------------------
+
+Crimson Flare:
+"
+backdrop-filter: blur(18px) saturate(150%);
+-webkit-backdrop-filter: blur(18px) saturate(150%);
+background: rgba(69, 10, 10, 0.2);
+border-radius: 18px;
+border: 1px solid rgba(252, 165, 165, 0.2);
+box-shadow: 0px 10px 35px 0 rgba(0, 0, 0, 0.35),
+            inset 0 0 100px rgba(239, 68, 68, 0.15),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.12);
+"
+-------------------------------------
+
+Solaris Gold:
+"
+backdrop-filter: blur(14px) saturate(130%);
+-webkit-backdrop-filter: blur(14px) saturate(130%);
+background: rgba(254, 252, 232, 0.1);
+border-radius: 22px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 2px 6px 28px 0 rgba(113, 63, 18, 0.2),
+            inset 0 0 0px rgba(255, 255, 255, 0),
+            inset 0px 0px 4px 2px rgba(255, 255, 255, 0.3);
+/* Reflection overlay for realism using pseudo-elements */
+.glassmorphism-element::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to left top, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%);
+  z-index: 1;
+}
+
+.glassmorphism-element::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+"
+-------------------------------------
